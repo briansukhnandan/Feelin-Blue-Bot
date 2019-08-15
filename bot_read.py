@@ -63,8 +63,8 @@ while True:
 
                 else:
 
-                    print("No more comments to reply to with the target body: '"+message+"'")
-                    time.sleep(300)
+                    # print("No more comments to reply to with the target body: '"+message+"'")
+                    time.sleep(5)
 
             # If this comment is in the comment cache, skip it.
 

@@ -10,7 +10,7 @@ listOfSubreddits = [
     'terriblefacebookmemes',
     'emojipasta',
     'roblox',
-    'funny',
+    'teenagers',
     'fffffffuuuuuuuuuuuu',
     'copypasta',
     'madlads',
@@ -18,7 +18,7 @@ listOfSubreddits = [
 ]
 
 # Target body
-messages = ["depressed", "sad", "bad day"]
+messages = ["depressed", "very sad", "bad day"]
 
 # First task:
 # Create an array, and take the line in posts_replied_to.txt and split by " ".
@@ -86,7 +86,7 @@ while True:
 
                     comments_file = open("logs/posts_replied_to.txt", "a+")
                     current_comment.reply(
-                        "Why you feeling sad, comrade? \n\nHere's a rad tune, [to make you feel a lil' more glad!](https://youtu.be/lWm8m-VE_p8) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!")
+                        "Why you feeling sad, comrade? \n\nHere's a rad tune, [to make you feel a lil' more glad!](https://www.youtube.com/watch?v=u3KF6DBRRik) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!")
                     comments_file.write(str(current_comment.id) + "\n")
 
                     comments_file.close()

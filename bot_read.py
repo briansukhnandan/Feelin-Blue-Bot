@@ -10,12 +10,12 @@ listOfSubreddits = [
     'dankmemes',
     'funny',
     'testingground4bots',
-    'BikiniBottomTwitter',
+    'fffffffuuuuuuuuuuuu',
     'copypasta'
 ]
 
 # Target body
-message = "sad"
+message = "depressed"
 
 # First task:
 # Create an array, and take the line in posts_replied_to.txt and split by " ".

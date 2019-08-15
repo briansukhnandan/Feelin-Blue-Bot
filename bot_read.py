@@ -11,7 +11,8 @@ listOfSubreddits = [
     'funny',
     'testingground4bots',
     'fffffffuuuuuuuuuuuu',
-    'copypasta'
+    'copypasta',
+    'madlads'
 ]
 
 # Target body
@@ -71,15 +72,17 @@ while True:
                     # Once we reply to a comment
                     # Suspend for 10 minutes to avoid reddit ratelimit (time allowed between posts).
 
-                    print("Post Successful. Sleeping for 10 minutes to refresh."+"\n")
+                    print("Post Successful. Sleeping for 30 minutes to refresh."+"\n")
+                    time.sleep(600)
+                    time.sleep(600)
                     time.sleep(600)
 
             # If this comment is in the comment cache, skip it.
 
             else:
 
-                print("Encountered comment #"+str(current_comment.id)+" already. Skipping it.")
-                time.sleep(3)
+                print("Encountered comment #"+str(current_comment.id)+" already. Skipping it in one minute.")
+                time.sleep(60)
                 continue
 
     print("Loop starting over, starting new search for a comment.")

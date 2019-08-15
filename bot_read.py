@@ -4,7 +4,7 @@ import time
 
 reddit = praw.Reddit('feelinbluebot')
 
-subreddit = reddit.subreddit('testingground4bots')
+subreddit = reddit.subreddit('memes')
 
 # Target body
 message = "very sad"

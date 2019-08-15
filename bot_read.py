@@ -71,13 +71,8 @@ while True:
                     # Once we reply to a comment
                     # Suspend for 10 minutes to avoid reddit ratelimit (time allowed between posts).
 
-                    print("Sleeping for 10 minutes to refresh."+"\n")
+                    print("Post Successful. Sleeping for 10 minutes to refresh."+"\n")
                     time.sleep(600)
-
-                else:
-
-                    # print("No more comments to reply to with the target body: '"+message+"'")
-                    time.sleep(3)
 
             # If this comment is in the comment cache, skip it.
 

@@ -1,13 +1,21 @@
 import praw
 import re
 import time
+import random
 
 reddit = praw.Reddit('feelinbluebot')
 
-subreddit = reddit.subreddit('memes')
+listOfSubreddits = [
+    'memes',
+    'dankmemes',
+    'funny',
+    'testingground4bots',
+    'BikiniBottomTwitter',
+    'copypasta'
+]
 
 # Target body
-message = "very sad"
+message = "sad"
 
 # First task:
 # Create an array, and take the line in posts_replied_to.txt and split by " ".
@@ -22,7 +30,12 @@ with open('logs/posts_replied_to.txt') as file_read:
 
 while True:
 
+    randNum = random.randint(0, len(listOfSubreddits)-1)
+
+    subreddit = reddit.subreddit(listOfSubreddits[randNum])
+
     # Loop through submissions in the hot section of chosen subreddit.
+    print("Indexing through: r/"+str(listOfSubreddits[randNum]))
 
     for submission in subreddit.hot(limit=25):
 
@@ -64,14 +77,14 @@ while True:
                 else:
 
                     # print("No more comments to reply to with the target body: '"+message+"'")
-                    time.sleep(5)
+                    time.sleep(3)
 
             # If this comment is in the comment cache, skip it.
 
             else:
 
                 print("Encountered comment #"+str(current_comment.id)+" already. Skipping it.")
-                time.sleep(30)
+                time.sleep(3)
                 continue
 
     print("Loop starting over, starting new search for a comment.")

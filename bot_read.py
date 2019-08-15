@@ -6,17 +6,19 @@ import random
 reddit = praw.Reddit('feelinbluebot')
 
 listOfSubreddits = [
-    'memes',
-    'dankmemes',
+    'FellowKids',
+    'terriblefacebookmemes',
+    'emojipasta',
+    'roblox',
     'funny',
-    'testingground4bots',
     'fffffffuuuuuuuuuuuu',
     'copypasta',
-    'madlads'
+    'madlads',
+    'Surrealmemes'
 ]
 
 # Target body
-message = "depressed"
+messages = ["depressed", "sad", "bad day"]
 
 # First task:
 # Create an array, and take the line in posts_replied_to.txt and split by " ".
@@ -26,6 +28,7 @@ with open('logs/posts_replied_to.txt') as file_read:
 
 # print("Comment cache" + "\n")
 # print(comment_cache)
+
 
 # Main entry post.
 
@@ -57,7 +60,8 @@ while True:
                 # Close the file and reopen for appending
                 # comments_file.close()
 
-                if re.search(message, current_comment.body, re.IGNORECASE):
+                # Responds to comments with the word "depressed" contained in them.
+                if re.search(messages[0], current_comment.body, re.IGNORECASE):
 
                     comments_file = open("logs/posts_replied_to.txt", "a+")
                     current_comment.reply("Why so blue, kangaroo? \n\nHere's a catchy sea shanty, [just for you!](https://youtu.be/GVXCr6upWUo) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!")
@@ -76,6 +80,37 @@ while True:
                     time.sleep(600)
                     time.sleep(600)
                     time.sleep(600)
+
+                # Responds to comments with the word "sad" contained in them.
+                if re.search(messages[1], current_comment.body, re.IGNORECASE):
+
+                    comments_file = open("logs/posts_replied_to.txt", "a+")
+                    current_comment.reply(
+                        "Why you feeling sad, comrade? \n\nHere's a rad tune, [to make you feel a lil' more glad!](https://youtu.be/lWm8m-VE_p8) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!")
+                    comments_file.write(str(current_comment.id) + "\n")
+
+                    comments_file.close()
+
+                    print("Post Successful. Sleeping for 30 minutes to refresh." + "\n")
+                    time.sleep(600)
+                    time.sleep(600)
+                    time.sleep(600)
+
+                # Responds to comments with the phrase "bad day" contained in them.
+                if re.search(messages[2], current_comment.body, re.IGNORECASE):
+
+                    comments_file = open("logs/posts_replied_to.txt", "a+")
+                    current_comment.reply(
+                        "Having a bad day, you incredible blue jay? \n\nHere's a groovy clip, [so you wont go astray!](https://youtu.be/MYfeSHgfK5s) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!")
+                    comments_file.write(str(current_comment.id) + "\n")
+
+                    comments_file.close()
+
+                    print("Post Successful. Sleeping for 30 minutes to refresh." + "\n")
+                    time.sleep(600)
+                    time.sleep(600)
+                    time.sleep(600)
+
 
             # If this comment is in the comment cache, skip it.
 

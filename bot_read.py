@@ -10,10 +10,8 @@ listOfSubreddits = [
     'terriblefacebookmemes',
     'emojipasta',
     'roblox',
-    'teenagers',
     'fffffffuuuuuuuuuuuu',
     'copypasta',
-    'madlads',
     'Surrealmemes'
 ]
 
@@ -41,7 +39,7 @@ while True:
     # Loop through submissions in the hot section of chosen subreddit.
     print("Indexing through: r/"+str(listOfSubreddits[randNum]))
 
-    for submission in subreddit.hot(limit=25):
+    for submission in subreddit.hot(limit=15):
 
         # Now loop through all comments in the submission, top-level and all below.
 
@@ -59,6 +57,15 @@ while True:
                 # Do a case-insensitive search on the body of all comments.
                 # Close the file and reopen for appending
                 # comments_file.close()
+
+                # If comment.author returns None, we have a deleted comment.
+                # Skip it.
+                if current_comment.author is None:
+                    continue
+
+                # Prevent the bot from replying to itself.
+                if current_comment.author.name == 'FeelinBlueBot':
+                    continue
 
                 # Responds to comments with the word "depressed" contained in them.
                 if re.search(messages[0], current_comment.body, re.IGNORECASE):
@@ -101,7 +108,7 @@ while True:
 
                     comments_file = open("logs/posts_replied_to.txt", "a+")
                     current_comment.reply(
-                        "Having a bad day, you incredible blue jay? \n\nHere's a groovy clip, [so you wont go astray!](https://youtu.be/MYfeSHgfK5s) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!")
+                        "Having a horrible day, you incredible blue jay? \n\nHere's a groovy clip, [so you wont go astray!](https://youtu.be/MYfeSHgfK5s) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!")
                     comments_file.write(str(current_comment.id) + "\n")
 
                     comments_file.close()

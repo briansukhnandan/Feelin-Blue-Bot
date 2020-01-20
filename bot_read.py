@@ -6,17 +6,37 @@ import random
 reddit = praw.Reddit('feelinbluebot')
 
 listOfSubreddits = [
-    'FellowKids',
-    'terriblefacebookmemes',
     'emojipasta',
-    'roblox',
-    'fffffffuuuuuuuuuuuu',
     'copypasta',
-    'Surrealmemes'
+    'testingground4bots',
 ]
 
 # Target body
-messages = ["depressed", "very sad", "bad day"]
+messages = ["depressed", "very sad", "bad day", "kill me", "end my life"]
+
+# Array of youtube videos
+possible_videos = [
+                    "https://youtu.be/GVXCr6upWUo",
+                    "https://www.youtube.com/watch?v=u3KF6DBRRik",
+                    "https://youtu.be/MYfeSHgfK5s",
+                    "https://youtu.be/vKSjydW2Ik0",
+                    "https://youtu.be/9faqM-WvxBQ",
+                    "https://youtu.be/ryxRN29ev3s",
+                    "https://www.youtube.com/watch?v=7G_aaak-tDE",
+                    "https://www.youtube.com/watch?v=e9x4o1gAzTc",
+                    "https://youtu.be/C2ZRPz4KZfo",
+                    "https://youtu.be/ngtzvZ1V0p8",
+                    "https://youtu.be/pAebnJXbEHA",
+                    "https://youtu.be/HJPDiFCo4Nc",
+                    "https://youtu.be/_L-CYkXmJzw",
+                    "https://youtu.be/EWeVKUAkgnw",
+                    "https://www.youtube.com/watch?v=WwK3OK3ZqDE",
+                    "https://youtu.be/kG-xi6Mx5i0",
+                    "https://youtu.be/eEoMI9BwHp4",
+                    "https://youtu.be/vwg-8mKaluE",
+                    "https://youtu.be/wifBBIc2kIM",
+                    "https://youtu.be/X1M69l7ZGlw",
+                                                                ]
 
 # First task:
 # Create an array, and take the line in posts_replied_to.txt and split by " ".
@@ -39,7 +59,7 @@ while True:
     # Loop through submissions in the hot section of chosen subreddit.
     print("Indexing through: r/"+str(listOfSubreddits[randNum]))
 
-    for submission in subreddit.hot(limit=15):
+    for submission in subreddit.hot(limit=10):
 
         # Now loop through all comments in the submission, top-level and all below.
 
@@ -71,7 +91,7 @@ while True:
                 if re.search(messages[0], current_comment.body, re.IGNORECASE):
 
                     comments_file = open("logs/posts_replied_to.txt", "a+")
-                    current_comment.reply("Why so blue, kangaroo? \n\nHere's a catchy sea shanty, [just for you!](https://youtu.be/GVXCr6upWUo) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!")
+                    current_comment.reply("Why so blue, kangaroo? \n\nHere's a catchy sea shanty, [just for you!]({}) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!".format(random.choice(possible_videos)))
                     comments_file.write(str(current_comment.id)+"\n")
 
                     # Add the comment to the comment cache (temporary)
@@ -83,101 +103,68 @@ while True:
                     # Once we reply to a comment
                     # Suspend for 10 minutes to avoid reddit ratelimit (time allowed between posts).
 
-                    print("Post Successful. Sleeping for 30 minutes to refresh."+"\n")
-                    time.sleep(600)
-                    time.sleep(600)
-                    time.sleep(600)
+                    print("Post Successful. Sleeping for 24 hours to refresh."+"\n")
+                    time.sleep(86400)
 
-                # Responds to comments with the word "sad" contained in them.
+                # Responds to comments with the word "very sad" contained in them.
                 if re.search(messages[1], current_comment.body, re.IGNORECASE):
 
                     comments_file = open("logs/posts_replied_to.txt", "a+")
                     current_comment.reply(
-                        "Why you feeling sad, comrade? \n\nHere's a rad tune, [to make you feel a lil' more glad!](https://www.youtube.com/watch?v=u3KF6DBRRik) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!")
+                        "Why you feeling sad, comrade? \n\nHere's a rad tune, [to make you feel a lil' more glad!]({}) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!".format(random.choice(possible_videos)))
                     comments_file.write(str(current_comment.id) + "\n")
 
                     comments_file.close()
 
-                    print("Post Successful. Sleeping for 30 minutes to refresh." + "\n")
-                    time.sleep(600)
-                    time.sleep(600)
-                    time.sleep(600)
+                    print("Post Successful. Sleeping for 24 hours to refresh." + "\n")
+                    time.sleep(86400)
 
                 # Responds to comments with the phrase "bad day" contained in them.
                 if re.search(messages[2], current_comment.body, re.IGNORECASE):
 
                     comments_file = open("logs/posts_replied_to.txt", "a+")
                     current_comment.reply(
-                        "Having a horrible day, you incredible blue jay? \n\nHere's a groovy clip, [so you wont go astray!](https://youtu.be/MYfeSHgfK5s) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!")
+                        "Having a horrible day, you incredible blue jay? \n\nHere's a groovy clip, [so you wont go astray!]({}) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!".format(random.choice(possible_videos)))
                     comments_file.write(str(current_comment.id) + "\n")
 
                     comments_file.close()
 
-                    print("Post Successful. Sleeping for 30 minutes to refresh." + "\n")
-                    time.sleep(600)
-                    time.sleep(600)
-                    time.sleep(600)
+                    print("Post Successful. Sleeping for 24 hours to refresh." + "\n")
+                    time.sleep(86400)
+
+                # Responds to comments with the phrase "kill me" contained in them.
+                if re.search(messages[3], current_comment.body, re.IGNORECASE):
+
+                    comments_file = open("logs/posts_replied_to.txt", "a+")
+                    current_comment.reply(
+                        "Feeling like your whole world is coming down? \n\nWell let me turn that frown. [right around!]({}) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!".format(random.choice(possible_videos)))
+                    comments_file.write(str(current_comment.id) + "\n")
+
+                    comments_file.close()
+
+                    print("Post Successful. Sleeping for 24 hours to refresh." + "\n")
+                    time.sleep(86400)
+
+                # Responds to comments with the phrase "end my life" contained in them.
+                if re.search(messages[4], current_comment.body, re.IGNORECASE):
+
+                    comments_file = open("logs/posts_replied_to.txt", "a+")
+                    current_comment.reply(
+                        "Feeling down in the dumps? \n\nLet me change your mind by showing you something funny, [ol' chum!]({}) \n\n \n\n \n\n^I ^am ^a ^bot ^and ^this ^was ^performed ^automatically!".format(random.choice(possible_videos)))
+                    comments_file.write(str(current_comment.id) + "\n")
+
+                    comments_file.close()
+
+                    print("Post Successful. Sleeping for 24 hours to refresh." + "\n")
+                    time.sleep(86400)
 
 
             # If this comment is in the comment cache, skip it.
 
             else:
 
-                print("Encountered comment #"+str(current_comment.id)+" already. Skipping it in one minute.")
-                time.sleep(60)
+                print("Encountered comment #"+str(current_comment.id)+" already. Skipping it in 12 hours.")
+                time.sleep(43200)
                 continue
 
     print("Loop starting over, starting new search for a comment.")
-
-    # -------------------------------------------------------------------------------------------
-    # -------------------------------------------------------------------------------------------
-    # -------------------------------------------------------------------------------------------
-    # -------------------------------------------------------------------------------------------
-    # -------------------------------------------------------------------------------------------
-    # -------------------------------------------------------------------------------------------
-    # -------------------------------------------------------------------------------------------
-
-'''
-
-    # Have we run this code before? If not, create an empty list
-    if not os.path.isfile("posts_replied_to.txt"):
-        posts_replied_to = []
-
-    # If we have run the code before, load the list of posts we have replied to
-    else:
-        # Read the file into a list and remove any empty values
-        with open("posts_replied_to.txt", "r") as f:
-            posts_replied_to = f.read()
-            posts_replied_to = posts_replied_to.split("\n")
-
-            # This is the actual line to filter out empty entries.
-            posts_replied_to = list(filter(None, posts_replied_to))
-
-        # If we haven't replied to this post before
-        # posts_replied_to will store a number string for the id of the post
-        # not the actual submission as a whole.
-        # so use submission.id.
-        if submission.id not in posts_replied_to:
-
-            # Do a case insensitive search
-            if re.search("hello", submission.title, re.IGNORECASE):
-                # Reply to the post
-                submission.reply("Test successful")
-                print("Bot replying to : ", submission.title)
-
-                # Store the current id into our list
-                posts_replied_to.append(submission.id)
-
-    # Write our updated list back to the file
-    with open("posts_replied_to.txt", "w") as f:
-        for post_id in posts_replied_to:
-            f.write(post_id + "\n")
-            
-
-    for submission in subreddit.hot(limit=5):
-        print("Title: ", submission.title)
-        print("Text: ", submission.selftext)
-        print("Score: ", submission.score)
-        print("---------------------------------\n")
-        
-'''
